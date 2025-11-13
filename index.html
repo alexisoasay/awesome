@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SPELL it Fun!</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="app-container">
+    <header>
+      <h1 class="title">🧠 AWESOME! ✨</h1>
+      <p class="subtitle">A Website for Exploring Spelling Obstacles and Mastering Exercises</p>
+    </header>
+
+    <main>
+      <!-- Home Section -->
+      <section id="home" class="active">
+        <div class="character">🐵</div>
+        <p class="intro-text">Welcome! Please enter your name to start.</p>
+        <input type="text" id="kid-name" placeholder="Enter your name..." />
+        <button class="btn main-btn" onclick="startGameIntro()">Start 🎮</button>
+      </section>
+
+      <!-- Categories -->
+      <section id="categories">
+        <h2>Hi, <span id="display-name"></span>! 👋</h2>
+        <p>Choose a category:</p>
+        <div class="button-grid">
+          <button class="btn" onclick="chooseCategory('Name')">🧒 Name</button>
+          <button class="btn" onclick="chooseCategory('Place')">🌍 Place</button>
+          <button class="btn" onclick="chooseCategory('Thing')">🎁 Thing</button>
+          <button class="btn" onclick="chooseCategory('Event')">🎉 Event</button>
+          <button class="btn" onclick="chooseCategory('Animal')">🐶 Animal</button>
+        </div>
+      </section>
+
+      <!-- Difficulty -->
+      <section id="difficulty">
+        <h2>Pick Your Level</h2>
+        <div class="button-grid">
+          <button class="btn easy" onclick="startSpelling('Easy')">Easy 😺</button>
+          <button class="btn hard" onclick="startSpelling('Difficult')">Difficult 🦁</button>
+        </div>
+      </section>
+
+      <!-- Game Section -->
+      <section id="game">
+        <h2 id="category-title"></h2>
+        <p id="instructions">Tap to hear the word and type what you hear!</p>
+        <button id="play-sound-btn" class="btn sound-btn" onclick="playWord()">🔊 Play Word</button>
+        <p id="word-hint"></p>
+        <input type="text" id="answer" placeholder="Type your spelling here..." autocomplete="off" />
+        <button class="btn submit-btn" onclick="checkAnswer()">Submit ✅</button>
+        <p id="feedback"></p>
+        <p id="score"></p>
+      </section>
+
+      <!-- Result -->
+      <section id="result">
+        <h2>🎉 Great Job, <span id="final-name"></span>! 🎉</h2>
+        <p id="final-score"></p>
+        <div class="character">🦊</div>
+        <button class="btn main-btn" onclick="restart()">Play Again 🔁</button>
+      </section>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker.register("./service-worker.js")
+        .then(() => console.log("Service Worker Registered!"));
+    }
+  </script>
+</body>
+</html>
